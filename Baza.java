@@ -62,9 +62,6 @@ public class Baza
     {
         return nombreJugadorQueVaGanando;
     }
-    
-    
-
 }
 
 

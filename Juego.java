@@ -145,10 +145,35 @@ public class Juego
      *    bazas) o "no es julepe".
      *
      */
-    private void jugar()
+    public void jugar()
     {
-
+        repartir();
+        int jugada = 0;
+        boolean tuTurno = false;
         
+        while(jugada <= 5){
+            Baza baza = new Baza(jugadores.length, paloQuePinta);
+            Scanner x = new Scanner(System.in);
+            int turno = 1;
+            while(tuTurno == false){
+                jugadores[0].verCartasJugador();                
+                System.out.println(jugadores[0].getNombre() + " tira una de las cartas que tengas");
+                String cartaTirada = x.nextLine();
+                Carta cartaTiradaPorMi = jugadores[0].tirarCarta(cartaTirada);
+                baza.addCarta(cartaTiradaPorMi, jugadores[0].getNombre());
+                tuTurno = true;                
+            }            
+            while(turno < jugadores.length){
+                Carta cartaBot = jugadores[turno].tirarCartaAleatoria();
+                baza.addCarta(cartaBot, jugadores[turno].getNombre());
+                turno++;                
+            }
+            Carta cartaGanadora = baza.cartaQueVaGanandoLaBaza();
+            String jugadorGanador = baza.nombreJugadorQueVaGanandoLaBaza();            
+            System.out.println(jugadorGanador + " ha ganado esta baza");
+            tuTurno = false;
+        }
+        jugada++;
     }    
 }
 
