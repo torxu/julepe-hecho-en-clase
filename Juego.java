@@ -108,7 +108,17 @@ public class Juego
      */
     private int encontrarPosicionJugadorPorNombre(String nombre)
     {
-        
+        int posicionActualDelJugador = -1;
+        int contador = 0;
+        boolean buscando = false;
+        while(buscando == false && contador < jugadores.length){
+            if(jugadores[contador].getNombre().equals(nombre)){
+                posicionActualDelJugador = contador;
+                buscando = true;
+            }
+            contador++;
+        }
+        return posicionActualDelJugador;
     }
     
         
